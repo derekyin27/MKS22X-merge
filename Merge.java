@@ -11,6 +11,8 @@ public class Merge{
   }
   private static void merge(int[] data, int[] data1){
     int[] merged = new int[data.length + data1.length];
-    
+    for (int i =0; i < merged.length; i++){
+      
+    }
   }
 }
