@@ -1,15 +1,32 @@
 import java.util.Arrays;
 public class Merge{
+  private static void insertionSort(int[] data, int low, int high){
+    int comp;
+    for (int i = low + 1; i < high + 1; i++){
+      comp = data[i];
+      int count = i;
+      while (count > low && comp < data[count - 1]){
+        data[count] = data[count - 1];
+        count--;
+      }
+      data[count] = comp;
+    }
+  }
   public static void mergesort(int[] data){
      mergesort(data, 0, data.length-1);
   }
   private static void mergesort(int[] data, int lo, int hi){
     if (lo >= hi) return;
+    if (hi - lo <= 30)
+      insertionSort(data, lo, hi);
+
+    else{
     int mid = lo +(hi - lo)/2 ;
     mergesort(data, lo, mid);
     mergesort(data, mid+1, hi);
     merge(data, lo, mid, hi);
     }
+  }
 
 
   private static void merge(int[] data, int low, int mid, int high){
